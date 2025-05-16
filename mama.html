@@ -5,6 +5,10 @@
     <title>Mamá ❤️</title>
     <meta name="google-adsense-account" content="ca-pub-4704501585981299" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <style>
@@ -261,50 +265,202 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.7);
+        background: url("https://i.imgur.com/5bQJQJZ.jpg") center/cover
+          no-repeat; /* Imagen de fondo premium */
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 1000;
+        overflow: hidden;
       }
 
       .form-container {
-        background: rgba(255, 255, 255, 0.384);
-        padding: 2rem;
-        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        padding: 2.5rem;
+        border-radius: 24px;
         text-align: center;
-        max-width: 500px;
-        width: 90%;
+        width: 360px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        animation: elegantAppear 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        transform: scale(0.95);
+        opacity: 0;
+      }
+
+      .form-container::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 230, 240, 0.4) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        animation: rotateGradient 15s linear infinite;
+        z-index: -1;
+      }
+
+      .form-container::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+        animation: gradientFlow 3s ease infinite alternate;
       }
 
       .form-container h2 {
-        color: #d14d44;
-        margin-bottom: 1rem;
+        color: #d6336c;
+        margin: 0 0 1.8rem 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        font-family: "Playfair Display", serif;
+        letter-spacing: -0.5px;
+        position: relative;
+        display: inline-block;
+        animation: textGlow 2s ease-in-out infinite alternate;
+      }
+
+      .form-container h2::after {
+        content: "Mamá";
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.9rem;
+        color: #ff8fab;
+        font-weight: 400;
+        font-style: italic;
       }
 
       .form-container input {
         width: 100%;
-        padding: 0.8rem;
+        padding: 1rem 1.5rem;
         margin: 1rem 0;
-        border: 2px solid #d14d44;
-        border-radius: 5px;
+        border: none;
+        border-radius: 15px;
         font-size: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        transition: all 0.5s;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        animation: fadeInUp 0.8s 0.4s both;
+      }
+
+      .form-container input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(214, 51, 108, 0.2);
+        transform: translateY(-2px);
       }
 
       .form-container button {
-        background: #d14d44;
+        background: linear-gradient(135deg, #ff6b8b, #d6336c);
         color: white;
         border: none;
-        padding: 0.8rem 1.5rem;
-        border-radius: 5px;
-        font-size: 1rem;
+        padding: 1.1rem;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        width: 100%;
+        margin-top: 1.5rem;
         cursor: pointer;
-        transition: background 0.3s;
-        margin-top: 1rem;
+        transition: all 0.5s;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        box-shadow: 0 10px 20px rgba(214, 51, 108, 0.3);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s 0.6s both;
+        z-index: 1;
+      }
+
+      .form-container button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #d6336c, #ff6b8b);
+        opacity: 0;
+        transition: all 0.5s;
+        z-index: -1;
       }
 
       .form-container button:hover {
-        background: #c24e46;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(214, 51, 108, 0.4);
+      }
+
+      .form-container button:hover::before {
+        opacity: 1;
+      }
+
+      .form-container button::after {
+        content: "❤";
+        position: absolute;
+        right: 20px;
+        transition: all 0.5s;
+      }
+
+      .form-container button:hover::after {
+        transform: scale(1.5);
+      }
+
+      /* Animaciones premium */
+      @keyframes elegantAppear {
+        0% {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes rotateGradient {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes gradientFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes textGlow {
+        0% {
+          text-shadow: 0 0 5px rgba(214, 51, 108, 0.3);
+        }
+        100% {
+          text-shadow: 0 0 15px rgba(214, 51, 108, 0.5);
+        }
       }
 
       .share-btn {
