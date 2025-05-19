@@ -21,7 +21,7 @@
       }
       body {
         font-family: "Quicksand", sans-serif;
-        background: linear-gradient(to bottom right, #ffecec, #fff5f5, #ffebeb);
+        background: linear-gradient(to bottom right, #ffecec, #ffffff, #ca08f3);
         color: #333;
         display: flex;
         justify-content: center;
@@ -41,10 +41,10 @@
 
         --envelope-width: 300px;
         --envelope-height: 175px;
-        --envelope-clr-bg: #d14d44;
-        --envelope-clr-bg-side: #c24e46;
-        --envelope-clr-bg-bottom: #e15349;
-        --envelope-clr-bg-top: #d14d44;
+        --envelope-clr-bg: #ca08f3;
+        --envelope-clr-bg-side: #8a0078;
+        --envelope-clr-bg-bottom: #d400ff;
+        --envelope-clr-bg-top: #ca08f3;
         --envelope-clr-txt: #fff;
 
         --envelope-transform-hover: rotateY(180deg);
@@ -52,7 +52,7 @@
         --evelope-rotate-delay-hover: 0ms;
 
         --letter-clr-bg: #fff;
-        --letter-clr-text: #c0392b;
+        --letter-clr-text: #046f58;
         --letter-font-size: 1rem;
         --letter-delay: 0ms;
         --letter-delay-hover: calc(var(--duration) * 1.25);
@@ -250,11 +250,11 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: #333;
+        color: #111111;
       }
 
       .gender-option input[type="radio"] {
-        accent-color: #d14d44;
+        accent-color: #ca08f3;
         width: 8px;
         height: 8px;
       }
@@ -275,7 +275,7 @@
       }
 
       .form-container {
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(223, 205, 205, 0.92);
         backdrop-filter: blur(8px);
         padding: 2.5rem;
         border-radius: 24px;
@@ -300,7 +300,7 @@
         background: radial-gradient(
           circle,
           rgba(255, 230, 240, 0.4) 0%,
-          rgba(255, 255, 255, 0) 70%
+          rgba(225, 105, 105, 0) 70%
         );
         animation: rotateGradient 15s linear infinite;
         z-index: -1;
@@ -467,7 +467,7 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background: #d14d44;
+        background: #ca08f3;
         color: white;
         border: none;
         padding: 0.8rem 1.5rem;
@@ -516,8 +516,10 @@
               class="custom-image"
             />
             <p>
-              Feliz día <span id="letter-mom-name">mamá</span>, gracias por
-              darme la vida.<span class="highlight">¡Te amo mucho❤️!</span>
+              Feliz día de la Madre <span id="letter-mom-name">mamá</span>,
+              gracias por darme la vida.<span class="highlight"
+                >¡Te amo mucho❤️!</span
+              >
             </p>
             <img
               src="https://img.freepik.com/fotos-premium/imagen-flores-amarillas-palabras-sol-citadas-ella_1191871-60686.jpg"
@@ -563,15 +565,15 @@
     ></script>
 
     <script>
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
+      // document.addEventListener("contextmenu", function (e) {
+      //   e.preventDefault();
+      // });
 
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "F12") e.preventDefault();
-        if (e.ctrlKey && e.shiftKey && e.key === "I") e.preventDefault();
-        if (e.ctrlKey && e.key === "u") e.preventDefault();
-      });
+      // document.addEventListener("keydown", function (e) {
+      //   if (e.key === "F12") e.preventDefault();
+      //   if (e.ctrlKey && e.shiftKey && e.key === "I") e.preventDefault();
+      //   if (e.ctrlKey && e.key === "u") e.preventDefault();
+      // });
 
       document.addEventListener("DOMContentLoaded", function () {
         const nameForm = document.getElementById("name-form");
