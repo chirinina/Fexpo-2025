@@ -449,7 +449,7 @@
         padding: 1rem 1.5rem;
         margin: 1rem 0;
         border: none;
-        border-radius: 15px;
+        border-radius: 35px;
         /* font-size: 1rem; */
         background: rgba(255, 255, 255, 0.9);
         transition: all 0.5s;
@@ -467,8 +467,8 @@
         background: linear-gradient(135deg, #ff6b8b, #d6336c);
         color: white;
         border: none;
-        padding: 1.1rem;
-        border-radius: 15px;
+        padding: 1.0rem;
+        border-radius: 55px;
         /* font-size: 1.1rem; */
         width: 48%;
         margin-top: 1.5rem;
@@ -490,7 +490,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #d6336c, #ff6b8b);
+        background: linear-gradient(135deg, #82e0e3, #010101);
         opacity: 0;
         transition: all 0.5s;
         z-index: -1;
@@ -690,7 +690,7 @@
   />
 
   <div class="gender-options">
-    <p>Que eres:</p>
+    <!-- <p>Que eres:</p> -->
 
     <label class="gender-option">
       <input type="radio" name="child-type" value="Hijo" checked />
@@ -757,22 +757,22 @@
     ></script>
     <script>
       // Desactivar clic derecho
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
+      // document.addEventListener("contextmenu", function (e) {
+      //   e.preventDefault();
+      // });
 
-      // Desactivar combinaciones de teclas para inspeccionar
-      document.addEventListener("keydown", function (e) {
-        if (
-          e.key === "F12" ||
-          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
-          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
-          (e.ctrlKey && e.key.toLowerCase() === "u") ||
-          (e.ctrlKey && e.key.toLowerCase() === "s")
-        ) {
-          e.preventDefault();
-        }
-      });
+      // // Desactivar combinaciones de teclas para inspeccionar
+      // document.addEventListener("keydown", function (e) {
+      //   if (
+      //     e.key === "F12" ||
+      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
+      //     (e.ctrlKey && e.key.toLowerCase() === "u") ||
+      //     (e.ctrlKey && e.key.toLowerCase() === "s")
+      //   ) {
+      //     e.preventDefault();
+      //   }
+      // });
 
       document.addEventListener("DOMContentLoaded", function () {
         const nameForm = document.getElementById("name-form");
