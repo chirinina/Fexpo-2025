@@ -17,6 +17,99 @@
   </head>
   <body>
     <style>
+      /* Añade esto al final de tu sección CSS */
+
+      /* Pequeñas pantallas (menos de 400px) */
+      @media (max-width: 400px) {
+        .envelope {
+          --envelope-width: 280px;
+          --envelope-height: 160px;
+          --letter-font-size: 0.9rem;
+        }
+
+        .letter p {
+          width: 28ch;
+        }
+
+        .form-container {
+          width: 95%;
+          padding: 1.2rem;
+        }
+
+        .form-container h2 {
+          font-size: 0rem;
+        }
+
+        .highlight {
+          font-size: 1.4rem;
+        }
+      }
+
+      /* Pantallas medianas (401px-719px) */
+      @media (min-width: 401px) and (max-width: 719px) {
+        .envelope {
+          --envelope-width: 450px;
+          --envelope-height: 260px;
+          --letter-font-size: 1.2rem;
+        }
+
+        .form-container {
+          width: 380px;
+        }
+      }
+
+      /* Pantallas grandes (más de 1200px) */
+      @media (min-width: 1200px) {
+        .envelope {
+          --envelope-width: 650px;
+          --envelope-height: 380px;
+          --letter-font-size: 1.8rem;
+        }
+      }
+
+      /* Ajustes para orientación horizontal en móviles */
+      @media (max-height: 500px) and (orientation: landscape) {
+        body {
+          margin-top: 20px;
+          padding: 0.5rem;
+        }
+
+        .envelope {
+          --envelope-width: 350px;
+          --envelope-height: 200px;
+          --letter-font-size: 0.9rem;
+        }
+
+        .form-container {
+          max-height: 90vh;
+          overflow-y: auto;
+        }
+      }
+
+      /* Optimización para Safari iOS */
+      @supports (-webkit-touch-callout: none) {
+        .envelope {
+          perspective: 1200px;
+        }
+
+        .envelope-inner {
+          transform-style: preserve-3d;
+        }
+      }
+
+      /* Mejoras de rendimiento para dispositivos móviles */
+      @media (hover: none) {
+        .envelope {
+          --duration: 800ms;
+        }
+
+        .form-container button:hover {
+          transform: none;
+          box-shadow: 0 10px 20px rgba(214, 51, 108, 0.3);
+        }
+      }
+    </style>
+    <style>
       @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap);
 
       *,
@@ -219,6 +312,7 @@
         transform: translateX(-50%);
         background: var(--letter-clr-bg);
         z-index: 2;
+        border-radius: 35px 1px;
         padding: 0em 3em;
         display: flex;
         flex-direction: column;
@@ -267,7 +361,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: #111111;
+        color: #000c84;
       }
 
       .gender-option input[type="radio"] {
@@ -282,8 +376,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("https://i.imgur.com/5bQJQJZ.jpg") center/cover
-          no-repeat; /* Imagen de fondo premium */
+        background: url("https://i.ibb.co/wFVx3ycG/madre-e-hija-abrazando-en-el-banco-al-aire-libre.jpg")
+          center/cover no-repeat; /* Imagen de fondo premium */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -316,7 +410,7 @@
         height: 200%;
         background: radial-gradient(
           circle,
-          rgba(255, 230, 240, 0.4) 0%,
+          rgba(22, 239, 255, 0.4) 0%,
           rgba(225, 105, 105, 0) 70%
         );
         animation: rotateGradient 15s linear infinite;
@@ -384,7 +478,7 @@
         padding: 1.1rem;
         border-radius: 15px;
         font-size: 1.1rem;
-        width: 100%;
+        width: 48%;
         margin-top: 1.5rem;
         cursor: pointer;
         transition: all 0.5s;
@@ -488,7 +582,7 @@
         color: white;
         border: none;
         padding: 0.8rem 1.5rem;
-        border-radius: 5px;
+        border-radius: 35px;
         font-size: 1rem;
         cursor: pointer;
         z-index: 100;
@@ -630,22 +724,22 @@
 
     <script>
       // Desactivar clic derecho
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
+      // document.addEventListener("contextmenu", function (e) {
+      //   e.preventDefault();
+      // });
 
-      // Desactivar combinaciones de teclas para inspeccionar
-      document.addEventListener("keydown", function (e) {
-        if (
-          e.key === "F12" ||
-          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
-          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
-          (e.ctrlKey && e.key.toLowerCase() === "u") ||
-          (e.ctrlKey && e.key.toLowerCase() === "s")
-        ) {
-          e.preventDefault();
-        }
-      });
+      // // Desactivar combinaciones de teclas para inspeccionar
+      // document.addEventListener("keydown", function (e) {
+      //   if (
+      //     e.key === "F12" ||
+      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
+      //     (e.ctrlKey && e.key.toLowerCase() === "u") ||
+      //     (e.ctrlKey && e.key.toLowerCase() === "s")
+      //   ) {
+      //     e.preventDefault();
+      //   }
+      // });
 
       document.addEventListener("DOMContentLoaded", function () {
         const nameForm = document.getElementById("name-form");
