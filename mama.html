@@ -349,14 +349,6 @@
         font-weight: bold;
       }
 
-      /* Nuevos estilos para opciones */
-      .gender-options {
-        display: flex;
-        gap: 1rem;
-        margin: 0rem 0;
-        justify-content: center;
-      }
-
       .gender-option {
         display: flex;
         align-items: center;
@@ -617,12 +609,6 @@
           font-size: 1rem;
         }
 
-        .gender-options {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-
         .gender-option {
           margin-bottom: 0.5rem;
         }
@@ -641,6 +627,7 @@
         }
       }
     </style>
+
     <div class="envelope" id="envelope">
       <div class="envelope-inner">
         <div class="envelope-front">
@@ -690,38 +677,84 @@
     </div>
 
     <button class="share-btn" id="share-btn">Compartir</button>
-
+    <button class="share-btn">Ir</button>
     <div class="name-form" id="name-form">
       <div class="form-container">
-        <h2>Personaliza tu carta</h2>
-        <input
-          type="text"
-          id="name-input"
-          placeholder="Mi querida mamá"
-          required
-        />
+  <h2>Personaliza tu carta</h2>
 
-        <div class="gender-options">
-          <label class="gender-option">
-            <input type="radio" name="child-type" value="hijo" checked />
-            Hijo
-          </label>
-          <label class="gender-option">
-            <input type="radio" name="child-type" value="hija" />
-            Hija
-          </label>
-        </div>
+  <input
+    type="text"
+    id="name-input"
+    placeholder="Ej: Mi querida mamá"
+    required
+  />
 
-        <button id="submit-btn">Genearar</button>
-      </div>
+  <div class="gender-options">
+    <p>Que eres:</p>
+
+    <label class="gender-option">
+      <input type="radio" name="child-type" value="Hijo" checked />
+      Hijo
+    </label>
+
+    <label class="gender-option">
+      <input type="radio" name="child-type" value="Hija" />
+      Hija
+    </label>
+
+    <!-- Opciones adicionales ocultas inicialmente -->
+    <div id="more-options" style="display: none;">
+      <label class="gender-option">
+        <input type="radio" name="child-type" value="Sobrina" />
+        Sobrina
+      </label>
+      <label class="gender-option">
+        <input type="radio" name="child-type" value="Sobrino" />
+        Sobrino
+      </label>
+      <label class="gender-option">
+        <input type="radio" name="child-type" value="Yerna" />
+        Yerna
+      </label>
+      <label class="gender-option">
+        <input type="radio" name="child-type" value="Yerno" />
+        Yerno
+      </label>
     </div>
 
+    <!-- Botón de ícono sin diseño, solo funcional -->
+    <button
+      id="toggle-btn"
+      type="button"
+      title="Mostrar más opciones"
+      style="all: unset; cursor: pointer; margin-left: 5px;"
+    >
+      ▼
+    </button>
+  </div>
+
+  <button id="submit-btn">Generar</button>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById("toggle-btn");
+  const moreOptions = document.getElementById("more-options");
+
+  toggleBtn.addEventListener("click", () => {
+    const isVisible = moreOptions.style.display === "block";
+    moreOptions.style.display = isVisible ? "none" : "block";
+    toggleBtn.textContent = isVisible ? "▼" : "▲";
+    toggleBtn.title = isVisible ? "Mostrar más opciones" : "Ocultar opciones";
+  });
+</script>
+
+      </div>
+    </div>
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4704501585981299"
       crossorigin="anonymous"
     ></script>
-
     <script>
       // Desactivar clic derecho
       document.addEventListener("contextmenu", function (e) {
