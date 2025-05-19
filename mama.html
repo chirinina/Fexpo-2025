@@ -95,13 +95,24 @@
         left: 50%;
         width: var(--shadow-width);
         height: 40px;
-        transition: var(--duration) ease-in-out;
-        transition-delay: var(--evelope-rotate-delay);
-        transform: var(--shadow-transform);
-        translate: -50% 0;
+        transform: translateX(-50%);
         border-radius: 50%;
-        background: rgba(56, 6, 6, 0.4);
+        background: rgba(1, 107, 100, 0.4);
         filter: blur(var(--shadow-blur));
+        opacity: 0;
+        animation: enterFromSides var(--duration) ease-in-out forwards;
+        animation-delay: var(--evelope-rotate-delay);
+      }
+
+      @keyframes enterFromSides {
+        0% {
+          transform: translateX(-200%) translateY(0);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+          opacity: 1;
+        }
       }
 
       .envelope:hover {
