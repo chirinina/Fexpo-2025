@@ -9,6 +9,11 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://i.ibb.co/B22695mM/logo.jpg"
+    />
   </head>
   <body>
     <style>
@@ -576,15 +581,23 @@
     ></script>
 
     <script>
-      // document.addEventListener("contextmenu", function (e) {
-      //   e.preventDefault();
-      // });
+      // Desactivar clic derecho
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
 
-      // document.addEventListener("keydown", function (e) {
-      //   if (e.key === "F12") e.preventDefault();
-      //   if (e.ctrlKey && e.shiftKey && e.key === "I") e.preventDefault();
-      //   if (e.ctrlKey && e.key === "u") e.preventDefault();
-      // });
+      // Desactivar combinaciones de teclas para inspeccionar
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "F12" ||
+          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
+          (e.ctrlKey && e.key.toLowerCase() === "u") ||
+          (e.ctrlKey && e.key.toLowerCase() === "s")
+        ) {
+          e.preventDefault();
+        }
+      });
 
       document.addEventListener("DOMContentLoaded", function () {
         const nameForm = document.getElementById("name-form");
