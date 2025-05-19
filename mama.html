@@ -25,7 +25,7 @@
         box-sizing: border-box;
       }
       body {
-        font-family: "Quicksand", sans-serif;
+        /* font-family: "Quicksand", sans-serif; */
         background: linear-gradient(to bottom right, #ffecec, #ffffff, #ca08f3);
         color: #10006b;
         display: flex;
@@ -219,10 +219,10 @@
         transform: translateX(-50%);
         background: var(--letter-clr-bg);
         z-index: 2;
-        padding: 2em 3em;
+        padding: 0em 3em;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: -90%rem;
         align-items: center;
         text-align: center;
         transition: var(--duration) ease-in-out;
@@ -238,8 +238,8 @@
       }
 
       .custom-image {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 20px;
         object-fit: contain;
       }
       .custom-image2 {
@@ -499,7 +499,54 @@
         background: #01024e;
       }
     </style>
+    <style>
+      /* Añade estos estilos al inicio de tu sección CSS */
+      @media (max-width: 480px) {
+        .form-container {
+          width: 90%;
+          padding: 1.5rem;
+          border-radius: 16px;
+        }
 
+        .form-container h2 {
+          font-size: 1.5rem;
+          margin-bottom: 1.2rem;
+        }
+
+        .form-container input {
+          padding: 0.8rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        .form-container button {
+          padding: 0.9rem;
+          font-size: 1rem;
+        }
+
+        .gender-options {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .gender-option {
+          margin-bottom: 0.5rem;
+        }
+
+        .name-form {
+          background-size: cover;
+          background-position: center;
+          padding: 1rem;
+        }
+      }
+
+      /* Ajustes adicionales para tablets */
+      @media (min-width: 481px) and (max-width: 719px) {
+        .form-container {
+          width: 70%;
+        }
+      }
+    </style>
     <div class="envelope" id="envelope">
       <div class="envelope-inner">
         <div class="envelope-front">
@@ -582,23 +629,23 @@
     ></script>
 
     <script>
-      // // Desactivar clic derecho
-      // document.addEventListener("contextmenu", function (e) {
-      //   e.preventDefault();
-      // });
+      // Desactivar clic derecho
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
 
-      // // Desactivar combinaciones de teclas para inspeccionar
-      // document.addEventListener("keydown", function (e) {
-      //   if (
-      //     e.key === "F12" ||
-      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
-      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
-      //     (e.ctrlKey && e.key.toLowerCase() === "u") ||
-      //     (e.ctrlKey && e.key.toLowerCase() === "s")
-      //   ) {
-      //     e.preventDefault();
-      //   }
-      // });
+      // Desactivar combinaciones de teclas para inspeccionar
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "F12" ||
+          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
+          (e.ctrlKey && e.key.toLowerCase() === "u") ||
+          (e.ctrlKey && e.key.toLowerCase() === "s")
+        ) {
+          e.preventDefault();
+        }
+      });
 
       document.addEventListener("DOMContentLoaded", function () {
         const nameForm = document.getElementById("name-form");
