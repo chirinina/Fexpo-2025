@@ -423,7 +423,7 @@
       .form-container h2 {
         color: #d6336c;
         margin: 0 0 1.8rem 0;
-        font-size: 1.8rem;
+        font-size: 1.3rem;
         font-weight: 700;
         font-family: "Playfair Display", serif;
         letter-spacing: -0.5px;
@@ -443,25 +443,84 @@
         font-weight: 400;
         font-style: italic;
       }
+        .form-container input {
+          width: 100%;
+          padding: 0.6rem 1.2rem; /* más compacto */
+          margin: 0.6rem 0;
+          border: none;
+          border-radius: 25px;
+         
+      
+          color: #444;
+          transition:
+            background 0.4s ease,
+            box-shadow 0.5s ease,
+            transform 0.3s ease;
+          animation: fadeInScale 1s ease forwards;
+          position: relative;
+          overflow: hidden;
+          will-change: transform, box-shadow, background;
+          cursor: text;
+        }
 
-      .form-container input {
-        width: 100%;
-        padding: 1rem 1.5rem;
-        margin: 1rem 0;
-        border: none;
-        border-radius: 35px;
-        /* font-size: 1rem; */
-        background: rgba(255, 255, 255, 0.9);
-        transition: all 0.5s;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        animation: fadeInUp 0.8s 0.4s both;
-      }
+        /* Animación combinada: fadeIn con scale y pequeño movimiento */
+        @keyframes fadeInScale {
+          0% {
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translateY(-7px) scale(1.05);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
 
-      .form-container input:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(214, 51, 108, 0.2);
-        transform: translateY(-2px);
-      }
+        /* Efecto "shine" animado al pasar el mouse */
+        .form-container input::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+          transform: rotate(25deg) translateX(-100%);
+          transition: transform 0.7s ease;
+          pointer-events: none;
+          border-radius: 25px;
+          z-index: 1;
+        }
+
+        .form-container input:hover::before {
+          transform: rotate(25deg) translateX(100%);
+        }
+
+        /* Foco con efecto glow sin bordes */
+        .form-container input:focus {
+          outline: none;
+          background: #fff;
+          box-shadow:
+            0 0 10px 3px rgba(214, 51, 108, 0.45),
+            inset 0 0 8px rgba(214, 51, 108, 0.2),
+            0 4px 15px rgba(214, 51, 108, 0.3);
+          transform: translateY(-4px) scale(1.05);
+          z-index: 2;
+        }
+
+        /* Suavizado para texto y cursor */
+        .form-container input::-webkit-input-placeholder {
+          color: #bbb;
+          transition: color 0.3s ease;
+        }
+
+        .form-container input:focus::-webkit-input-placeholder {
+          color: transparent;
+        }
+
 
       .form-container button {
         background: linear-gradient(135deg, #ff6b8b, #d6336c);
@@ -890,22 +949,22 @@
     ></script>
     <script>
       // Desactivar clic derecho
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
+      // document.addEventListener("contextmenu", function (e) {
+      //   e.preventDefault();
+      // });
 
-      // Desactivar combinaciones de teclas para inspeccionar
-      document.addEventListener("keydown", function (e) {
-        if (
-          e.key === "F12" ||
-          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
-          (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
-          (e.ctrlKey && e.key.toLowerCase() === "u") ||
-          (e.ctrlKey && e.key.toLowerCase() === "s")
-        ) {
-          e.preventDefault();
-        }
-      });
+      // // Desactivar combinaciones de teclas para inspeccionar
+      // document.addEventListener("keydown", function (e) {
+      //   if (
+      //     e.key === "F12" ||
+      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
+      //     (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") ||
+      //     (e.ctrlKey && e.key.toLowerCase() === "u") ||
+      //     (e.ctrlKey && e.key.toLowerCase() === "s")
+      //   ) {
+      //     e.preventDefault();
+      //   }
+      // });
 
       document.addEventListener("DOMContentLoaded", function () {
         const nameForm = document.getElementById("name-form");
