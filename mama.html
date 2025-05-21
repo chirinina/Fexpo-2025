@@ -304,7 +304,7 @@
 
       .letter {
         position: absolute;
-        bottom: 5px;
+        bottom: 40px;
         left: 50%;
         width: 90%;
         height: var(--letter-height);
@@ -327,7 +327,7 @@
       .letter p {
         margin: 0;
         font-weight: bold;
-        width: 32ch;
+        width: 25ch;
         color: var(--letter-clr-text);
       }
 
@@ -393,15 +393,15 @@
         opacity: 0;
       }
 
-      .form-container::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
+     .form-container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle
           rgba(22, 239, 255, 0.4) 0%,
           rgba(225, 105, 105, 0) 70%
         );
@@ -661,7 +661,7 @@
               class="custom-image"
             />
             <p>
-              Feliz día de la Madre <span id="letter-mom-name">mamá</span>,
+              Feliz día de la Madre querida<span id="letter-mom-name">mamá</span>,
               gracias por darme la vida.<span class="highlight"
                 >¡Te amo mucho❤️!</span
               >
@@ -672,6 +672,139 @@
               class="custom-image2"
             />
           </div>
+          <!-- Ícono animado con mensaje al hacer clic (tooltip hacia la derecha) -->
+<div class="floating-container">
+  <span class="icon" id="showTooltip" aria-label="Mostrar felicitación" role="button" tabindex="0">🎁</span>
+  <div class="tooltip" id="tooltipMessage" role="tooltip" aria-hidden="true">
+    Querida mamá, en este día tan especial quiero recordarte lo valiosa que eres para mí. 
+    Gracias por tus abrazos que sanan, tus palabras que inspiran y tu amor que nunca falla. 
+    Eres el alma de nuestro hogar, la guía de mi camino y el corazón que late en mi recuerdo todos los días. 
+    ¡Feliz Día de la Madre! 🌷 Que la vida te devuelva con amor todo lo que me has dado. Te amo profundamente. ❤️
+  </div>
+</div>
+
+<style>
+  .floating-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .icon {
+    font-size: 28px;
+    display: inline-block;
+    transition: transform 0.5s ease;
+    user-select: none;
+  }
+
+  .icon.opening {
+    animation: openGift 0.6s forwards;
+  }
+
+  @keyframes openGift {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(-15deg) scale(1.2);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  /* Tooltip estilo hacia la derecha */
+  .tooltip {
+    visibility: hidden;
+    max-width: 320px;
+    width: 280px;
+    background-color: #fff8f0;
+    color: #5a2a00;
+    text-align: left;
+    border-radius: 1px 90px 90px 50px;
+    padding: 16px 20px;
+    position: absolute;
+    left: 110%; /* justo a la derecha del icono */
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-family: 'Georgia', serif;
+    font-size: 9px;
+    line-height: 1.6;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .tooltip::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -9px;
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent #fff8f0 transparent transparent;
+  }
+
+  .tooltip.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+    pointer-events: auto;
+  }
+
+  /* Responsividad */
+  @media (max-width: 480px) {
+    .tooltip {
+      position: fixed;
+      left: 50% !important;
+      top: auto !important;
+      bottom: 20px;
+      transform: translateX(-50%) translateY(0) !important;
+      width: 90vw;
+      max-width: none;
+      border-radius: 12px;
+      padding: 14px 18px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .tooltip::after {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const icon = document.getElementById("showTooltip");
+  const tooltip = document.getElementById("tooltipMessage");
+
+  icon.addEventListener("click", () => {
+    icon.classList.add("opening");
+    setTimeout(() => {
+      tooltip.classList.toggle("show");
+      icon.classList.remove("opening");
+    }, 600);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!icon.contains(e.target) && !tooltip.contains(e.target)) {
+      tooltip.classList.remove("show");
+    }
+  });
+
+  icon.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      icon.click();
+    }
+  });
+</script>
+
         </div>
       </div>
     </div>
